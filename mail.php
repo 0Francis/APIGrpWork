@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Username   = $_ENV['SMTP_USER'];
             $mail->Password   = $_ENV['SMTP_PASS'];
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-            $mail->Port       = 465;
+            $mail->Port       = 46;
 
             //Recipients
             $mail->setFrom('BBIT2.2@noreply.com', 'BBIT 2.2');
