@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Username   = $_ENV['SMTP_USER']; // full Gmail address
             $mail->Password   = $_ENV['SMTP_PASS']; // Gmail App Password (16 chars)
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-            $mail->Port       = 465; // ✅ FIXED
+            $mail->Port       = 465; 
 
             // Recipients
             $mail->setFrom('BBIT2.2@noreply.com', 'BBIT 2.2');
