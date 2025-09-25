@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Your Website</title>
+    <link rel="stylesheet" href="style.css" /> 
+</head>
+<body>
+    <div class="signup-container">
+        <header class="signup-header">
+            <h1>Create Your Account</h1>
+            <p>Join us today and get started!</p>
+        </header>
+        
+        <form action="signup.php" method="post" class="signup-form">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required placeholder="Enter your first name">
+            </div>
+            
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" required placeholder="Enter your last name">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Create a password">
+            </div>
+            
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password">
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" class="submit-btn">Sign Up</button>
+            </div>
+            
+            <div class="form-footer">
+                <p>Already have an account? <a href="login.html">Sign In</a></p> <!-- Replace 'login.html' with your login page if it exists -->
+            </div>
+        </form>
+    </div>
+</body>
+</html>

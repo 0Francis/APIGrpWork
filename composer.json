@@ -1,0 +1,9 @@
+{
+    "require": {
+<<<<<<< HEAD
+=======
+        "phpmailer/phpmailer": "^6.10",
+>>>>>>> 988621c80664098385e9a45bec3f9279cebaf524
+        "vlucas/phpdotenv": "^5.6"
+    }
+}

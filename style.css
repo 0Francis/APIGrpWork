@@ -1,0 +1,196 @@
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body background with ombre effect */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, grey, white, black);
+  min-height: 100vh; /* Changed from height to min-height for flexibility */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Added padding for better edge spacing on mobile */
+}
+
+/* Form container - now also styles .container for 2FA */
+form,
+.container {
+  background: white;
+  padding: 40px; /* Increased padding for 2FA to match modern feel */
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px; /* Added max-width for 2FA responsiveness */
+  text-align: center; /* Center content for 2FA */
+}
+
+/* Heading - now covers h1 and h2 for 2FA logo */
+h1,
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: black;
+}
+
+h1 {
+  font-size: 28px; /* Slightly larger for 2FA "Verify Your Identity" */
+  font-weight: 600;
+}
+
+/* Subtitle for 2FA instructions */
+.subtitle {
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Input fields - general */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid grey;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Specific OTP input for 2FA */
+.otp-input {
+  padding: 15px; /* Larger padding for better touch targets */
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 4px; /* Spreads out characters for easy reading */
+  font-weight: 600;
+  border: 2px solid #e1e1e1; /* Slightly thicker border */
+}
+
+/* Input focus effect - applies to all inputs including OTP */
+input:focus,
+.otp-input:focus {
+  border-color: black;
+  outline: none;
+  background-color: #f0f0f0;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1); /* Subtle glow effect */
+}
+
+/* Button - general */
+button {
+  width: 100%;
+  padding: 10px;
+  background: grey;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease; /* Added transform for hover lift */
+}
+
+/* Specific submit button for 2FA */
+.submit-btn {
+  padding: 15px; /* Larger for emphasis */
+  background: linear-gradient(135deg, grey, black); /* Matches your theme with gradient */
+  font-weight: 600;
+}
+
+/* Button hover - applies to all buttons */
+button:hover,
+.submit-btn:hover {
+  background: black;
+  transform: translateY(-2px); /* Subtle lift effect */
+}
+
+/* Button active state */
+button:active,
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Extra links - now covers .resend-link for 2FA */
+p {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+a,
+.resend-link {
+  color: grey;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-block; /* Ensures proper spacing */
+}
+
+a:hover,
+.resend-link:hover {
+  text-decoration: underline;
+  color: black;
+}
+
+/* Error and success messages for 2FA */
+.error-message,
+.success-message {
+  font-size: 14px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  display: none; /* Hidden by default, shown via JS */
+}
+
+.error-message {
+  color: #e74c3c; /* Red for errors */
+  background-color: #fdf2f2;
+  border: 1px solid #e74c3c;
+}
+
+.success-message {
+  color: #27ae60; /* Green for success */
+  background-color: #f0fff4;
+  border: 1px solid #27ae60;
+}
+
+/* Form group wrapper for better spacing in 2FA */
+.form-group {
+  margin-bottom: 25px;
+  text-align: left; /* Labels left-aligned, input full-width */
+}
+
+/* Logo section for 2FA */
+.logo {
+  margin-bottom: 30px;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+  
+  form,
+  .container {
+    padding: 30px 20px; /* Reduce padding on small screens */
+    margin: 10px; /* Add margin to avoid edge touching */
+  }
+  
+  h1 {
+    font-size: 24px; /* Smaller heading on mobile */
+  }
+  
+  .otp-input {
+    font-size: 16px; /* Slightly smaller but still readable */
+    letter-spacing: 2px; /* Reduce spacing on small screens */
+  }
+}

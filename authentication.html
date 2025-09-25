@@ -1,0 +1,111 @@
+4<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two-Factor Authentication</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>Verify Your Email</h1>
+        </div>
+        
+        <p class="subtitle">
+            We've sent a verification code to your email address.
+            Please enter the 5-digit code below to complete your login.
+        </p>
+        
+        <form id="otpForm" method="POST" action="verify.php">
+            <div class="form-group">
+                <label for="otp">Verification Code</label>
+                <input 
+                    type="text" 
+                    id="otp" 
+                    name="otp" 
+                    class="otp-input" 
+                    placeholder="Enter code" 
+                    maxlength="5" 
+                    pattern="[A-Za-z0-9]{5}" 
+                    required
+                    autocomplete="off"
+                    autofocus
+                >
+            </div>
+            
+            <button type="submit" class="submit-btn">Verify & Sign In</button>
+            
+            <div id="errorMessage" class="error-message">
+                Invalid verification code. Please try again.
+            </div>
+            
+            <div id="successMessage" class="success-message">
+                Verification successful! Redirecting...
+            </div>
+        </form>
+        
+        <a href="resend_otp.php" class="resend-link">Didn't receive the code? Resend</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('otpForm');
+            const otpInput = document.getElementById('otp');
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Auto-uppercase and format input
+            otpInput.addEventListener('input', function(e) {
+                this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+            });
+            
+            // Basic client-side validation
+            form.addEventListener('submit', function(e) {
+                const otpValue = otpInput.value.trim();
+                
+                if (otpValue.length !== 6) {
+                    e.preventDefault();
+                    showError('Please enter a valid 6-character code');
+                    return;
+                }
+                
+                if (!/^[A-Z0-9]{6}$/.test(otpValue)) {
+                    e.preventDefault();
+                    showError('Code must contain only letters and numbers');
+                    return;
+                }
+            });
+            
+            function showError(message) {
+                errorMessage.textContent = message;
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+            }
+            
+            function showSuccess(message) {
+                successMessage.textContent = message;
+                successMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+            }
+            
+            // Check URL parameters for error messages from PHP
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+            const success = urlParams.get('success');
+            
+            if (error) {
+                showError(decodeURIComponent(error));
+            }
+            
+            if (success) {
+                showSuccess(decodeURIComponent(success));
+                // Auto-redirect after successful verification
+                setTimeout(() => {
+                    window.location.href = 'dashboard.php'; // Change to your destination
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>
